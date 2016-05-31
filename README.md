@@ -1,9 +1,11 @@
-# Joints Path
+# Joints Roadmap
 
 
 ## 介绍
 
-Joints Path是基于Nodejs + React构建的前后台一体应用框架，设计目标为构建模块化基于互联网应用。
+Joints Roadmap纪录Joints的演进过程，包括其架构设计，技术积累过程等等。
+
+Joints是基于Nodejs + React构建的前后台一体应用框架，设计目标为构建模块化基于互联网应用。
 
 设计宗旨为灵活，可迭代，高可扩展性应用，充分发挥您的创造力。
 
