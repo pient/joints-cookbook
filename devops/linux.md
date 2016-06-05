@@ -2,7 +2,7 @@
 
 ## 介绍
 
-Joints Hive用于构建支持Joints开发与部署的私有云平台
+Joints Kitchen用于构建支持Joints开发与部署的私有云平台
 
 linux为Joints运行环境（当前linux全部为centos）
 
@@ -44,6 +44,19 @@ yum list package1
 yum groupinfo group1
 
 ```
+
+### 磁盘管理
+
+- du
+
+```
+
+// 查看当前目录大小
+du -h -d 0 .
+
+
+```
+
 
 ### 网络命令
 

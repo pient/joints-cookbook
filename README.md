@@ -1,9 +1,9 @@
-# Joints Roadmap
+# Joints Cookbook
 
 
 ## 介绍
 
-Joints Roadmap纪录Joints的演进过程，包括其架构设计，技术积累过程等等。
+Joints Cookbook纪录Joints的演进过程，包括其架构设计，技术积累过程等等。
 
 Joints是基于Nodejs + React构建的前后台一体应用框架，设计目标为构建模块化基于互联网应用。
 

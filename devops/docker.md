@@ -2,7 +2,7 @@
 
 ## 介绍
 
-Joints Hive用于构建支持Joints开发与部署的私有云平台
+Joints Kitchen用于构建支持Joints开发与部署的私有云平台
 
 Docker为此平台提供容器
 
