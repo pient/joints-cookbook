@@ -9,6 +9,7 @@ linux为Joints运行环境（当前linux全部为centos）
 
 ## 常用
 
+
 ### 基础配置
 
 - yum (CentOs中前端软件包管理器)
@@ -47,12 +48,19 @@ yum groupinfo group1
 
 ### 磁盘管理
 
-- du
-
 ```
 
 // 查看当前目录大小
 du -h -d 0 .
+
+// 硬链接
+ln <source-path> <link-path>
+
+// 软链接
+ln -s <source-path> <link-path>
+
+// 删除软链接
+rm -rf <link-path>
 
 
 ```
@@ -78,6 +86,7 @@ du -h -d 0 .
  - nameif基于MAC地址给网络界面命名。
 
  - netstat可以显示网络连接、路由列表、界面状态、虚拟连接等信息。
+ eg. $ netstat -tunlp |grep  18080
 
  - nisdomainname 同domainname。
 
@@ -119,8 +128,6 @@ yum install openssh-server
 // 启动sshd服务
 /usr/sbin/sshd start
 
-
-
 ```
 
 - nc (发送tcp/udp包)
@@ -136,6 +143,10 @@ yum install nc
 - 其他常用命令
 
 ```
+
+pgrep -l <porc-name> // 查看进程id
+kill -s USR1 <pid> // 发送USR1信号
+uname -r // 查看linux内核版本
 top // eg. top -bnc 1
 nslookup  // 查询域名对应ip或相反
 route     // 管理系统路由
@@ -143,6 +154,12 @@ traceroute // 跟踪路由(当ping不通时，追踪原因)
 rcp       // 远程文件拷贝
 finger    // 查询登录记录
 
+// 文件查找
+grep -n -A 20 -B 20 <target-text> <file-name>
+
+// 文件查看
+tail -f <log-file>
+tail -n <row-number> <log-file>
 
 ```
 
@@ -187,6 +204,9 @@ users
 id -un // 获取当前登入用户名称
 whoami // 等同于id -un
 
+// 重设root密码
+sudo passwd root
+
 useradd
 adduser
 passwd // 设置密码
@@ -205,6 +225,13 @@ groupdel
 groupmod
 grpck grpconv
 grpunconv
+
+// 权限管理
+
+chgrp <group-name> <file/dir> // 修改文件用户组
+
+// 用户加入sudo
+visudo
 
 
 // 相关配置文件
