@@ -203,6 +203,7 @@ w // 查看本机当前用户信息信息
 users
 id -un // 获取当前登入用户名称
 whoami // 等同于id -un
+cat /etc/group // 查看所有用户及组
 
 // 重设root密码
 sudo passwd root
@@ -211,6 +212,7 @@ useradd
 adduser
 passwd // 设置密码
 usermod // 修改用户信息，如登录名，home目录等
+usermod -a -G <target-group> <user-name> // 修改用户所在组
 pwcov // 从/etc/passwd同步用户至/etc/shadow
 pwck // 校验用户配置是否合法
 pwunconv // pwcov的反向操作
