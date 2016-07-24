@@ -37,6 +37,9 @@ yum deplist package1
 
 // 清除缓存
 yum clean
+
+// 列出所有已安装的软件包
+yum list installed
   
 // 其他命令
 yum info package1
@@ -136,6 +139,38 @@ yum install openssh-server
 
 // 安装nc
 yum install nc
+
+
+```
+
+- 防火墙
+```
+// 关闭防火墙
+sudo systemctl stop firewalld.service
+
+// 开启防火墙
+sudo systemctl start firewalld.service
+
+// 禁用防火墙
+sudo systemctl disable firewalld.service
+
+// 启用防火墙
+sudo systemctl enable firewalld.service
+
+// 查看防火墙状态
+firewall-cmd --state
+
+// 重新加载防火墙
+firewall-cmd --reload
+
+// 获取防火墙区域
+firewall-cmd --get-zones
+
+// 获取防火墙支持服务
+firewall-cmd --get-services
+
+// 打开防火墙端口
+sudo firewall-cmd --zone=public --add-port=<port>/tcp
 
 
 ```
