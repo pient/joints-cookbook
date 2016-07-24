@@ -175,6 +175,25 @@ sudo firewall-cmd --zone=public --add-port=<port>/tcp
 
 ```
 
+- scp
+
+```
+// 查看服务器日志：
+ssh -p 1224 guest@192.168.2.120
+
+// 从服务器上下载文件
+scp username@servername:/path/filename /var/www/local_dir（本地目录）
+
+// 上传本地文件到服务器
+scp /path/filename username@servername:/path
+
+// 从服务器下载整个目录
+scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local_dir（本地目录）
+
+// 上传目录到服务器
+scp  -r local_dir username@servername:remote_dir
+```
+
 - 其他常用命令
 
 ```
