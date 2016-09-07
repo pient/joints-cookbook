@@ -88,7 +88,7 @@ Vagrant.configure("2") do |config|
 
   # src为原文件夹，src/website为vagrant中文件夹
   config.vm.synced_folder "src/", "/srv/website",
-    owner: "root", group: "root"
+    owner: "vagrant", group: "vagrant"
 
   # 加disabled: true, 禁用同步文件夹
   config.vm.synced_folder ".", "/vagrant", disabled: true
