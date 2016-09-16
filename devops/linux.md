@@ -194,6 +194,32 @@ scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local
 scp  -r local_dir username@servername:remote_dir
 ```
 
+- tar
+
+```
+// 仅打包，不压缩！
+tar -cvf /tmp/etc.tar /etc
+
+// 打包后，以 gzip 压缩
+tar -zcvf /tmp/etc.tar.gz /etc
+
+// 打包后，以 bzip2 压缩
+tar -jcvf /tmp/etc.tar.bz2 /etc
+
+// 查阅上述 /tmp/etc.tar.gz 文件内有哪些文件
+tar -ztvf /tmp/etc.tar.gz
+
+// 解压到当前目录
+tar -zxvf /tmp/etc.tar.gz
+
+// 解压压缩文件内的etc/passwd目录至当前目录
+tar -zxvf /tmp/etc.tar.gz etc/passwd
+
+// 解压压缩文件内的etc目录至当前目录并保留其权限
+tar -zxvpf /tmp/etc.tar.gz /etc
+
+```
+
 - 其他常用命令
 
 ```
