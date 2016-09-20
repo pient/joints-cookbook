@@ -131,6 +131,23 @@ yum install openssh-server
 // 启动sshd服务
 /usr/sbin/sshd start
 
+// 生成本机公钥
+ssh-keygen
+
+// 添加ssh公钥访问
+mkdir ~/.ssh    #如果当前用户目录下没有 .ssh 目录，请先创建目录
+chmod 700 ~/.ssh
+cd ~/.ssh
+touch authorized_keys
+chmod 600 authorized_keys
+// 复制公钥至authorized_keys文件
+
+// 把公钥复制到远程机器
+ssh-copy-id -i ~/.ssh/id_rsa.pub $user@$ip
+
+// ssh远程执行命令
+ssh -p $port $user@$ip 'cmd'
+
 ```
 
 - nc (发送tcp/udp包)
@@ -220,6 +237,31 @@ tar -zxvpf /tmp/etc.tar.gz /etc
 
 ```
 
+- grep
+
+```
+
+// 多个文件查询
+grep "sort" *.doc
+
+// 输出文档中含有48字符的行数
+grep -c "48" data.doc   
+
+// 显示所有匹配48的行和行号
+grep -n "48" data.doc
+
+// 输出所有不包含48的行   
+grep -vn "48" data.doc      
+
+// 输出所有含有ab或Ab的字符串的行  
+grep -i "ab" data.doc
+
+// 文件查找
+grep -n -A 20 -B 20 <target-text> <file-name>
+
+
+```
+
 - 其他常用命令
 
 ```
@@ -233,9 +275,6 @@ route     // 管理系统路由
 traceroute // 跟踪路由(当ping不通时，追踪原因)
 rcp       // 远程文件拷贝
 finger    // 查询登录记录
-
-// 文件查找
-grep -n -A 20 -B 20 <target-text> <file-name>
 
 // 文件查看
 tail -f <log-file>
