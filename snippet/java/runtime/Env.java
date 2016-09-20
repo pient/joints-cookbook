@@ -7,7 +7,7 @@ import java.util.Properties;
 /**
  * 获取系统环境变量
  *
- * Created by Ray on 2016-07-13
+ * Created by Ray on 2016-09-20
  *
  * 描述：获取系统环境变量相关方法
 */
