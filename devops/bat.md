@@ -51,7 +51,7 @@
 ```
 
 ### 三、批处理基本命令
-#### 0. help 命令
+#### 1) help 命令
   /? 命令
   语法： 命令 /?
   可显示此命令的帮助信息
@@ -60,8 +60,9 @@
 
 
 
-#### 1.Echo 命令
+#### 2) Echo 命令
   语法: echo [{on|off}] [message]
+```
   ECHO [ON | OFF]   打开回显或关闭回显功能。
   ECHO              显示当前回显设置。
   ECHO [message]    显示信息。
@@ -71,29 +72,30 @@
   Sample： echo hello world  (显示出“hello world”)
   Sample： echo Windows Registry Editor Version 5.00 > c:\setupreg.reg (此前还没有 setupreg.reg 这个文件)
   Sample： echo "SourcePath"="D:\\Win2003\\" >> c:\setupreg.reg   (追加内容进 setupreg.reg 这个文件)
+```
 
-#### 2.\@ 命令
-  表示不显示\@后面的命令，(在入侵过程中自然不能让对方看到你使用的命令啦)
-  \@ 与 echo off 相象，但它是加在每个命令行的最前面，表示运行时不显示这一行的命令行(只能影响当前行)。
-  Sample： \@echo off  (此语句常用于开头，表示不显示所有的命令行信息，包括此句)
-  Sample： \@echo please wait a minite...
-  Sample： \@format X: /q/u/autoset
+#### 3) @ 命令
+  表示不显示@后面的命令，(在入侵过程中自然不能让对方看到你使用的命令啦)
+  @ 与 echo off 相象，但它是加在每个命令行的最前面，表示运行时不显示这一行的命令行(只能影响当前行)。
+  Sample： @echo off  (此语句常用于开头，表示不显示所有的命令行信息，包括此句)
+  Sample： @echo please wait a minite...
+  Sample： @format X: /q/u/autoset
   (format 这个命令是不可以使用/y这个参数的，可喜的是微软留了个autoset这个参数给我们，效果和/y是一样的。)
 
-#### 3.Goto 命令
+#### 4) Goto 命令
   语法：goto label (label是参数，指定所要转向的批处理程序中的行。)
   指定跳转到标签行，找到标签行后，程序将处理从下一行开始的命令。
   label标签的名字可以随便起，但是最好是有意义的，字母前必须加个冒号“:”来表示这个字母是标签。
   goto命令就是根据这个冒号来寻找下一步跳到到那里。经常与 if 配合使用，根据不同的条件来执行不同的命令组。
   例题见“5.Pause 命令”
 
-#### 4.Rem 命令
+#### 5) Rem 命令
   语法：Rem Message...
   (小技巧：用::代替rem)
   注释命令，在C语言中相当与/*...*/,它并不会被执行，只是起一个注释的作用，便于别人阅读和自己日后修改。
   Sample：\@Rem Here is the description.
 
-#### 5.Pause 命令
+#### 6) Pause 命令
   会暂停批处理的执行并在屏幕上显示Press any key to continue...的提示，等待用户按任意键后继续
 ```
   Sample：
@@ -107,7 +109,7 @@
   在这个例子中，驱动器 A 中磁盘上的所有文件均复制到d:\back中。
   显示的信息提示您将另一张磁盘放入驱动器 A 时，pause 命令会使程序挂起，以便您更换磁盘，然后按任意键再次复制。
 
-#### 6.Call 命令
+#### 7) Call 命令
   语法: call [[Drive:][Path] FileName [BatchParameters]] [:label [arguments]]
   参数: [Drive:][Path] FileName  指定要调用的批处理程序的位置和名称。filename 参数必须具有 .bat 或 .cmd 扩展名。
   调用另一个批处理程序，并且不终止父批处理程序。
@@ -117,7 +119,7 @@
   Sample：call test2.bat arg1 arg2    (调用同目录下的 test2.bat，且输入2个参数给他)
   注：可以调用自身(死循环、递归)
 
-#### 7.start 命令
+#### 8) start 命令
   调用外部程序，所有的 DOS命令 和 命令行程序 都可以由 start命令 来调用。
   入侵常用参数：
         MIN 开始时窗口最小化
@@ -129,21 +131,21 @@
   Sample：start /MIN test2.bat arg1 arg2    (调用同目录下的 test2.bat，且输入2个参数给他，且本窗口最小化)
   Sample：e:\"program files"\极品列车时刻表\jpskb.exe  (文件路径名有空格时)
 
-#### 8.If 命令
+#### 9) If 命令
   if 表示将判断是否符合规定的条件，从而决定执行不同的命令。有三种格式:
-#####   1) IF
+#####   IF
      语法: if [not] "参数" == "字符串" 待执行的命令
      参数如果等于(not表示不等，下同)指定的字符串，则条件成立，运行命令，否则运行下一句。(注意是两个等号)
    Sample: if "%1" == "a" format a:
    Sample: if {%1} == {} goto noparms
 
-#####   2) if exist
+#####   if exist
      语法: if [not] exist [路径\]文件名 待执行的命令
      如果有指定的文件，则条件成立，运行命令，否则运行下一句。
      Sample: if exist config.sys edit config.sys   (表示如果存在这文件，则编辑它，用很难看的系统编辑器)
      Sample: if exist config.sys type config.sys   (表示如果存在这文件，则显示它的内容)
 
-#####  3) if errorlevel number
+#####  if errorlevel number
      语法: if [not] errorlevel <数字> 待执行的命令
      如果程序返回值等于指定的数字，则条件成立，运行命令，否则运行下一句。(返回值必须按照从大到小的顺序排列)
      Sample:
@@ -155,7 +157,7 @@
 
      很多DOS程序在运行结束后会返回一个数字值用来表示程序运行的结果(或者状态)，称为错误码errorlevel或称返回码。
      常见的返回码为0、1。通过if errorlevel命令可以判断程序的返回值，根据不同的返回值来决定执行不同的命令。
-#####  4) else
+#####  else
      语法： if 条件 (成立时执行的命令) else (不成立时执行的命令)
      如果是多个条件，建议适当使用括号把各条件包起来，以免出错。
      Sample: if 1 == 0 ( echo comment1 ) else if 1==0 ( echo comment2 ) else (echo comment3 )
@@ -163,7 +165,7 @@
      Sample: if 1 == 0 ( echo comment1 ) else if 1==0 ( echo comment2 ) ^
              else (echo comment3 )
 
-#####  5) 比较运算符:
+#####  比较运算符:
      EQU - 等于   (一般使用“==”)
      NEQ - 不等于 (没有 “!=”,改用“ if not 1==1 ”的写法)
      LSS - 小于
@@ -172,7 +174,7 @@
      GEQ - 大于或等于
 
 
-#### 9.choice 命令
+#### 10) choice 命令
   choice 使用此命令可以让用户输入一个字符(用于选择)，从而根据用户的选择返回不同的 errorlevel，
   然后配合 if errorlevel 选择运行不同的命令。
         注意：choice命令为DOS或者Windows系统提供的外部命令，不同版本的choice命令语法会稍有不同，请用choice /?查看用法。
@@ -189,15 +191,15 @@
 ```
 
 
-#### 10.for 命令
+#### 11) for 命令
    for 命令是一个比较复杂的命令，主要用于参数在指定的范围内循环执行命令。
-#####   1) for {%variable | %%variable} in (set) do command [command-parameters]
+#####   for {%variable | %%variable} in (set) do command [command-parameters]
       %variable 指定一个单一字母可替换的参数。变量名称是区分大小写的，所以 %i 不同于 %I
       在批处理文件中使用 FOR 命令时，指定变量建议用 %%variable而不要用 %variable。
       (set) 指定一个或一组文件。可以使用通配符。
       command 指定对每个文件执行的命令。
       command-parameters 为特定命令指定参数或命令行开关。
-#####   2) 如果命令扩展名被启用，下列额外的 FOR 命令格式会受到支持:
+#####   如果命令扩展名被启用，下列额外的 FOR 命令格式会受到支持:
       a.FOR /D %variable IN (set) DO command [command-parameters]
         如果集里面包含通配符，则指定与目录名匹配，而不与文件名匹配。
       b.FOR /R [[drive:]path] %variable IN (set) DO command [command-parameters]
@@ -219,7 +221,7 @@
               如果符号字符串中的最后一个字符星号，那么额外的变量将在最后一个符号解析之后分配并接受行的保留文本。
         usebackq        - 指定新语法已在下类情况中使用:
                           在作为命令执行一个后引号的字符串并且一个单引号字符为文字字符串命令并允许在 filenameset中使用双引号扩起文件名称。
-#####   3) Sample:
+#####   Sample:
       1. 如下命令行会显示当前目录下所有以bat或者txt为扩展名的文件名。
          for %%c in (*.bat *.txt) do (echo %%c)
       a. 如下命令行会显示当前目录下所有包含有 e 或者 i 的目录名。
@@ -241,7 +243,7 @@
          )
          :: 读取记事本里的内容(使用 delims 是为了把一行显示全,否则会以空格为分隔符)
          for /f "delims=" %%a in (zhidian.txt) do echo.%%a
-#####   4) continue 和 break
+#####   continue 和 break
       利用 goto 实现程序中常用的 continue 和 break 命令, 其实非常简单
       continue: 在 for 循环的最后一行写上一个标签，跳转到这位置即可
       break: 在 for 循环的外面的下一句写上一个标签，跳转到这位置即可
