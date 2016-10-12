@@ -1,3 +1,6 @@
 
+# node模块
+node_modules
+
 # java编译文件
 *.class
