@@ -61,3 +61,18 @@ FLUSH PRIVILEGES;
 QUIT;
 
 ```
+
+## 备份还原
+```
+// mysqldump基本语法
+mysqldump -u <username> -p <dbname> <table1> <table2> ... > dbbackup.sql
+
+// 数据还原
+mysql -u root -p <dbname> < dbbackup.sql
+
+// 目录备份(还原时直接复制目录)
+mysqlhotcopy [option] <dbname1> <dbname2> backupDir/
+
+
+
+```

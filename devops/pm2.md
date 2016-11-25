@@ -10,7 +10,7 @@ npm install -g pm2
 
 // 安装日志rotate模块
 pm2 install pm2-logrotate
-pm2 set pm2-logrotate:interval_unit ‘DD'
+pm2 set pm2-logrotate:interval_unit 'DD'
 
 // 安装mongodb模块
 pm2 install pm2-mongodb
