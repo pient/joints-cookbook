@@ -44,4 +44,16 @@ npm install -g apiconnect
 
 ```
 
+## 使用
+
+```
+
+// 登录用户
+
+
+// 查询参数传递
+{"skip":1,"limit":10,"where":{"name":{"like":"%江苏%"}}}
+
+```
+
 

@@ -211,6 +211,17 @@ scp -r username@servername:/var/www/remote_dir/（远程目录） /var/www/local
 scp  -r local_dir username@servername:remote_dir
 ```
 
+- curl
+```
+```
+
+- wget
+```
+// 通过Active Directory验证并访问
+wget --http-user='jspdi\600841' --http-passwd=password http://172.17.16.109/default.asp
+
+```
+
 - tar
 
 ```

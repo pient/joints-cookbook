@@ -6,9 +6,41 @@ Joints Kitchen用于构建支持Joints开发与部署的私有云平台
 
 Docker为此平台提供容器
 
+
+## 安装部署（CentOS）
+
+```
+// 检查版本号
+uname -r
+
+// 更新yum
+sudo yum update
+
+// 添加yum repo
+sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
+[dockerrepo]
+name=Docker Repository
+baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+enabled=1
+gpgcheck=1
+gpgkey=https://yum.dockerproject.org/gpg
+EOF
+
+// 安装docker包
+sudo yum install docker-engine
+
+// 启动服务
+sudo systemctl enable docker.service
+
+// 启动docker daemon
+sudo systemctl start docker
+
+```
+
 ## 常用
 
 ### Docker运行环境
+由于*nix下docker一直运行在root账号下，因此，必须用sudo
 
 - 设置docker deamon
 
