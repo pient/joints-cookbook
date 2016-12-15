@@ -2,16 +2,25 @@
 
 ## 安装部署
 
+#### Red Hat
+
+yum 安装：
+
+新建文件 /etc/yum.repos.d/mongodb-org-3.4.repo
+
+内容如下
 ```
-// On mac
-brew install mongodb
-
-// 安装完成后启动(--auth: 认证模式启动)
-mongod --config /usr/local/etc/mongod.conf [--auth]
-
-// 创建用户
-> use admin
-> db.createUser({user: "root", pwd: "root", roles: ['readWrite', 'dbAdmin']});
-
+[mongodb-org-3.4]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 
 ```
+
+执行yum命令
+```
+sudo yum install -y mongodb-org
+```
+

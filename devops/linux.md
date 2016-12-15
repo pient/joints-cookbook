@@ -161,6 +161,8 @@ yum install nc
 ```
 
 - 防火墙
+
+最新版Linux
 ```
 // 关闭防火墙
 sudo systemctl stop firewalld.service
@@ -189,6 +191,29 @@ firewall-cmd --get-services
 // 打开防火墙端口
 sudo firewall-cmd --zone=public --add-port=<port>/tcp
 
+
+```
+
+老版Linux(iptables)
+
+```
+// 查看当前端口情况
+iptables -L -n
+
+// 清除预设表filter中的所有规则链的规则
+iptables -F
+
+// 清除预设表filter中使用者自定链中的规则
+iptables -X
+
+// 保存配置信息
+/etc/rc.d/init.d/iptables save
+
+// 重启服务
+service iptables restart
+
+// 开启80端口
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 
 ```
 
