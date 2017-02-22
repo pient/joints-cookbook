@@ -9,6 +9,100 @@ linux为Joints运行环境（当前linux全部为centos）
 
 ## 常用
 
+### 查看系统信息
+```
+// 查看CentOs版本
+lsb_release -a
+
+// 安装lsb_release
+yum install lsb -y
+
+cat /etc/redhat-release
+
+rpm -q centos-release
+
+// 查看cpu信息
+cat /proc/cpuinfo
+
+// 查看内存信息
+free -m
+
+// 查看磁盘信息
+df -h
+fdisk -l
+cat /proc/partitions
+
+// 查看网卡信息
+dmesg | grep eth0
+ifcfg -eth0
+ethtool // 并非所有网卡支持此命令
+
+// 查看网关
+route |grep default
+
+// 查看linux端口
+netstat -lntp #查看监听(Listen)的端口
+netstat -antp #查看所有建立的TCP连接
+
+// 查看开启的服务
+chkconfig --list
+
+// 查看DNS
+cat /etc/resolv.conf
+
+// 查看内存信息
+sed -n '/MemTotal\|MemFree/p' /proc/meminfo
+
+// 查看语言字符集
+echo $LANG $LANGUAGE
+
+// 查看服务器上面所有用户
+cat /etc/passwd|awk -F: '{print $1}'
+
+```
+
+
+### 磁盘管理
+
+```
+
+// 查看当前目录大小
+du -h -d 0 .
+
+// 查看文件大小
+df -h
+
+// 硬链接
+ln <source-path> <link-path>
+
+// 软链接
+ln -s <source-path> <link-path>
+
+// 删除软链接
+rm -rf <link-path>
+
+// 查找文件, eg: find / -name '*.log'
+find <path> <options> <target-text>
+
+```
+
+
+### 命令执行
+```
+// 不挂断执行命令 
+nohup <command> <arge> <&>
+
+// eg.
+nohup /root/net_speeder venet0 "ip" >/dev/null 2>&1 &
+
+// 查看正在执行的命令
+jobs
+
+// 关闭命令
+fg %n
+
+```
+
 
 ### 基础配置
 
@@ -46,25 +140,6 @@ yum info package1
 yum list
 yum list package1
 yum groupinfo group1
-
-```
-
-### 磁盘管理
-
-```
-
-// 查看当前目录大小
-du -h -d 0 .
-
-// 硬链接
-ln <source-path> <link-path>
-
-// 软链接
-ln -s <source-path> <link-path>
-
-// 删除软链接
-rm -rf <link-path>
-
 
 ```
 
@@ -304,7 +379,9 @@ grep -n -A 20 -B 20 <target-text> <file-name>
 
 pgrep -l <porc-name> // 查看进程id
 kill -s USR1 <pid> // 发送USR1信号
+
 uname -r // 查看linux内核版本
+
 top // eg. top -bnc 1
 nslookup  // 查询域名对应ip或相反
 route     // 管理系统路由

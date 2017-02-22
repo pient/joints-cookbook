@@ -52,6 +52,12 @@ long_query_time         =2
 
 ## 用户及权限管理
 ```
+// 创建用户
+CREATE USER '<username>'@'<host>'' IDENTIFIED BY '<password>'; 
+
+// 设置用户密码
+update user set password=PASSWORD('<password>') where user='<username>'; 
+
 // 创建数据库
 CREATE DATABASE <dbname> CHARACTER SET utf8 COLLATE utf8_bin;
 
@@ -73,6 +79,17 @@ mysql -u root -p <dbname> < dbbackup.sql
 // 目录备份(还原时直接复制目录)
 mysqlhotcopy [option] <dbname1> <dbname2> backupDir/
 
+
+
+```
+
+## 查询语法
+```
+// 设置默认创建日期为当前日期
+ALTER TABLE <tablename> MODIFY COLUMN <columnname> datetime DEFAULT CURRENT_TIMESTAMP
+
+// 设置默认修改日期为当前日期
+ALTER TABLE <tablename> MODIFY COLUMN <columnname> datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
 
 
 ```
