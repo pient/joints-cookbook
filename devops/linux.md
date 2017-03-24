@@ -466,6 +466,8 @@ chgrp <group-name> <file/dir> // 修改文件用户组
 
 // 用户加入sudo
 visudo
+// 找到root ALL=(ALL) ALL，加上 
+<user-name> ALL=(ALL) NOPASSWD: ALL
 
 
 // 相关配置文件
@@ -474,5 +476,15 @@ visudo
 /etc/passwd // 用户配置文件
 /etc/shadow // 用户影子口令文件
 /etc/skel // 启动文件目录
+
+
+// Linux初始化admin用户
+useradd admin -p Ll@9186
+
+// 查看用户tty
+w
+
+// 踢人
+pkill -kill -t <user-tty>
 
 ```
